@@ -27,7 +27,25 @@ SECRET_KEY = 'django-insecure-)51%wywuef^soh8dyl$$j8!jvvm&@19y^4_s^uzvw%4q98uer#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# gestor_proyecto/settings.py
+
+# ... (cerca de la línea 30, donde se define ALLOWED_HOSTS)
+
 ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] # Esto es para desarrollo local
+
+# Añadimos el dominio de Render usando una variable de entorno
+if 'RENDER_EXTERNAL_HOSTNAME' in os.environ:
+    ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
+    # También puedes añadirlo directamente si el entorno es de producción
+    ALLOWED_HOSTS.append('gestor-libros.onrender.com') 
+    # Y, crucial para Render, aceptar el host interno:
+    ALLOWED_HOSTS.append('gestor-libros-ejemplo.onrender.com') # Usar el nombre de tu servicio si es diferente
 
 
 # Application definition
