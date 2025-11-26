@@ -1,0 +1,51 @@
+/* gestor_libros/static/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+nav a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.libro-list {
+    list-style: none;
+    padding: 0;
+}
+
+.libro-list li {
+    background: #e9e9e9;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-left: 5px solid #007bff;
+}
+
+.empty-message {
+    color: #dc3545;
+    font-style: italic;
+}

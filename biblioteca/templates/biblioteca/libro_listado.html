@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de Libros</title>
-</head>
-<body>
-    <h1>Catálogo de Libros Desplegado</h1>
+{% extends "base.html" %}
+
+{% block title %}Listado de Libros{% endblock %}
+
+{% block content %}
+    <h2>Libros en el Catálogo</h2>
     {% if libros %}
-        <ul>
+        <ul class="libro-list">
         {% for libro in libros %}
-            <li>{{ libro.titulo }} - {{ libro.autor }} ({{ libro.anio }})</li>
+            <li>
+                <strong>{{ libro.titulo }}</strong> por {{ libro.autor }} ({{ libro.anio }})
+            </li>
         {% endfor %}
         </ul>
     {% else %}
-        <p>¡El catálogo está vacío! (El despliegue fue exitoso).</p>
+        <p class="empty-message">¡El catálogo está vacío! No hay libros registrados.</p>
     {% endif %}
-    
-    <hr>
-    <p>¡El servidor de Render está sirviendo esta plantilla!</p>
-</body>
-</html>
+{% endblock %}
