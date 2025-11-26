@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Libros</title>
+</head>
+<body>
+    <h1>Catálogo de Libros Desplegado</h1>
+    {% if libros %}
+        <ul>
+        {% for libro in libros %}
+            <li>{{ libro.titulo }} - {{ libro.autor }} ({{ libro.anio }})</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>¡El catálogo está vacío! (El despliegue fue exitoso).</p>
+    {% endif %}
+    
+    <hr>
+    <p>¡El servidor de Render está sirviendo esta plantilla!</p>
+</body>
+</html>
