@@ -31,22 +31,18 @@ DEBUG = True
 
 # ... (cerca de la línea 30, donde se define ALLOWED_HOSTS)
 
-ALLOWED_HOSTS = []
+# 1. Definimos los hosts locales.
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] 
 
+# 2. LÓGICA DE PRODUCCIÓN: Añadir el host de Render (usando su variable de entorno)
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] # Esto es para desarrollo local
-
-# Añadimos el dominio de Render usando una variable de entorno
-if 'RENDER_EXTERNAL_HOSTNAME' in os.environ:
-    ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
-    # También puedes añadirlo directamente si el entorno es de producción
-    ALLOWED_HOSTS.append('gestor-libros.onrender.com') 
-    # Y, crucial para Render, aceptar el host interno:
-    ALLOWED_HOSTS.append('gestor-libros-ejemplo.onrender.com') # Usar el nombre de tu servicio si es diferente
-
+    
+    # OPCIONAL: Si quieres aceptar el nombre interno de Render (más seguro)
+    # y el nombre público 'hardcodeado' (para asegurar)
+    ALLOWED_HOSTS.append('gestor-libros.onrender.com')
 
 # Application definition
 
